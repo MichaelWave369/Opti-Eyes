@@ -1,8 +1,10 @@
-# Architecture / Rungs 1–3
+# Architecture / Rungs 1–4
 
 Opti-Eyes owns an **optical research simulator** today. Hardware design, physical autofocus, XR integration, sensor fusion, prescription adaptation and actual device pairing are **future research**, not working capabilities.
 
 - `src/optics.mjs`: pure deterministic idealized demand/actuator calculations.
+- `src/frame-model.mjs`: pure bounded geometry model and local concept export generators.
+- `src/hardware-studio.mjs`: isolated browser parametric controls and export buttons, no shared wrist/sensor state.
 - `src/sensor-model.mjs`: deterministic sensor fault fixtures, gate decisions, and visible manual fallback.
 - `src/wrist-session.mjs`: trusted, same-page Gen.E.Wrist WorldAdapter v1 host, reversible permissions and cleanup.
 - `vendor/genewrist/`: byte-pinned, read-only MIT-licensed upstream SDK subset with automated provenance validation.

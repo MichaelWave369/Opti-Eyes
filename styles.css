@@ -26,3 +26,33 @@
 .wrist-live{font:11px ui-monospace,Consolas,monospace!important;color:#99bbb8!important;margin-top:13px!important}
 #wrist-live-focus{color:#a8f6dd}
 .wrist-warning{color:#dcb48c!important;font:10px/1.5 ui-monospace,Consolas,monospace!important}
+
+/* Rung 4: non-wearable concept geometry lab */
+.hardware-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(325px,.85fr);gap:14px}
+.hw-panel{border:1px solid #294751;background:linear-gradient(145deg,#0c2530,#0b1b24);border-radius:14px;overflow:hidden}
+.hw-diagram{margin:16px;border:1px solid #244852;border-radius:9px;overflow:hidden;background:#091d27}
+.hw-diagram svg{display:block;width:100%;height:auto}
+.hw-figures{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:16px}
+.hw-figures div{border:1px solid #2d4d56;background:#102e38;padding:11px 8px;border-radius:7px}
+.hw-figures small{display:block;color:#97b5b9;font:9px ui-monospace,monospace}
+.hw-figures strong{display:block;color:#d2f5e9;font:clamp(13px,2vw,20px) ui-monospace,monospace;margin-top:10px}
+.hw-warning{font:11px/1.55 ui-monospace,monospace!important;color:#e1b986!important;margin:14px 16px 20px}
+.hw-controls{padding:7px 22px 22px}
+.hw-control{margin:20px 0}
+.hw-control label{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#b8d1cf;font:11px ui-monospace,monospace}
+.hw-control output{color:#b4efdb}
+.hw-control input{margin-top:11px}
+.hw-controls button,.hw-export button{background:#15323c;color:#c9eee7;border:1px solid #39636b;border-radius:7px;padding:11px 13px;font:11px ui-monospace,monospace;cursor:pointer}
+.hw-controls button{width:100%}
+.hardware-lower{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.hw-prose{padding:24px}
+.hw-prose label{display:block;font:11px ui-monospace,monospace;color:#9cbabf;margin:20px 0 9px}
+.hw-prose select{width:100%;background:#0b2029;color:#e0f4ee;border:1px solid #42656e;border-radius:7px;padding:12px}
+.hw-prose h3{font-size:21px;margin:26px 0 9px;color:#eaf6f2}
+.hw-prose>small{font:10px ui-monospace,monospace;color:#e3b68d}
+.hw-prose p:not(.eyebrow){font:13px/1.65 system-ui;color:#acc4c6}
+.hw-prose strong{color:#e3f5ee}
+.hw-export{display:flex;flex-direction:column;gap:9px;margin:20px 0}
+.hw-export button:hover,.hw-controls button:hover{border-color:#7ed8ce;background:#1b4550}
+@media(max-width:970px){.hardware-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.hardware-lower{grid-template-columns:1fr}.hw-figures{grid-template-columns:1fr 1fr}}
