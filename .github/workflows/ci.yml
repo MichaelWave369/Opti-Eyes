@@ -15,4 +15,4 @@ jobs:
       - run: npm run check
       - run: npm run build
       - name: Assert static distribution
-        run: test -s dist/index.html && test -s dist/src/optics.mjs && test -f dist/.nojekyll
+        run: test -s dist/index.html && test -s dist/src/optics.mjs && test -s dist/vendor/genewrist/src/core.js && test -s dist/vendor/genewrist/LICENSE && test -f dist/.nojekyll

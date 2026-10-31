@@ -22,6 +22,14 @@ Adaptive mode now offers six synthetic sensor conditions: clear, confidently bia
 
 **This is not verified autofocus, safe physical fallback, optical correction, or a medical device.** See [Sensor Bench](docs/SENSOR_BENCH.md).
 
+## Rung 3: Real SDK, local virtual wrist
+
+Opti-Eyes now uses a **byte-pinned, unmodified subset of the actual Gen.E.Wrist 0.3.0 core and WorldAdapter v1 implementation**, bundled locally for offline GitHub Pages use. In **WRIST*** mode you can explicitly connect a virtual wrist, inspect its live status, grant or revoke `adjust-focus`, and send focus-step commands through Gen.E.Wrist's real `requestWorldAction` permission checks.
+
+No action is permitted on connect. Leaving Wrist Preview, resetting the lab, or disconnecting clears the virtual grant and subscriptions. An action attempted before a grant is denied. The virtual wrist is **inside this same browser page**: this is *not* a connection to another Gen.E.Wrist website/tab or a physical device, and no Bluetooth, USB or network interaction is provided.
+
+See [Real SDK Bridge](docs/RUNG3_WRIST_RUNTIME.md) and [pinned upstream provenance](vendor/genewrist/README.md).
+
 ## Run
 
 Open `index.html` in a modern browser, or serve this directory using a static HTTP server.

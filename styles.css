@@ -13,3 +13,16 @@
 #sensor-status{font:10px ui-monospace,monospace;letter-spacing:.04em;color:#9fbfc5}
 #sensor-status[data-quality=accepted]{color:#8bdfb9}#sensor-status[data-quality=warning]{color:#f1bc76}#sensor-status[data-quality=rejected]{color:#e8aa9f}
 .sensor-panel p{font:12px/1.6 system-ui,sans-serif;color:#b7c8c6;margin:13px 0 0}
+
+/* Rung 3 / real pinned Gen.E.Wrist SDK local host integration */
+.wrist-link-controls{margin:18px 0 14px;border:1px solid #335f62;border-radius:9px;background:linear-gradient(135deg,#103039,#0b242d);padding:15px}
+.wrist-link-header{display:flex;justify-content:space-between;align-items:center;gap:12px;font:10px/1.5 ui-monospace,Consolas,monospace;letter-spacing:.04em;color:#a8c7cb;flex-wrap:wrap;margin-bottom:12px}
+.wrist-link-header strong{color:#88decb;font-weight:600}
+.wrist-link-controls .wrist-buttons{margin-bottom:13px}
+.wrist-link-controls .wrist-buttons button{font-size:10px}
+.wrist-link-controls button:disabled{opacity:.48;cursor:not-allowed}
+.grant-line{display:flex;gap:9px;align-items:center;font:11px/1.5 ui-monospace,Consolas,monospace;color:#bce7da}
+.grant-line input{width:17px;height:17px;accent-color:#75dfcf}
+.wrist-live{font:11px ui-monospace,Consolas,monospace!important;color:#99bbb8!important;margin-top:13px!important}
+#wrist-live-focus{color:#a8f6dd}
+.wrist-warning{color:#dcb48c!important;font:10px/1.5 ui-monospace,Consolas,monospace!important}
