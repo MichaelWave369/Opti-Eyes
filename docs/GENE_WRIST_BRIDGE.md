@@ -1,4 +1,6 @@
-# Proposed Gen.E.Wrist WorldAdapter integration
+# Gen.E.Wrist WorldAdapter integration
+
+**Update / Rung 3:** The [local SDK demo](RUNG3_WRIST_RUNTIME.md) now executes actual pinned Gen.E.Wrist v0.3.0 core and WorldAdapter logic within the Opti-Eyes page. The earlier description below concerns the original proposal and broader future hardware integration.
 
 The canonical [Gen.E.Wrist API v1](https://github.com/MichaelWave369/GenEWrist/blob/main/docs/ADAPTER_API.md) is host-owned, versioned and permission-gated. Opti-Eyes should eventually be a separate, explicitly registered **demo host** in Gen.E.Wrist WORLD Mode. This repository does not change Gen.E.Wrist.
 

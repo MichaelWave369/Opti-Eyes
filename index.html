@@ -17,7 +17,7 @@
         <span class="brand-mark" aria-hidden="true">Φ</span>
         <div><strong>OPTI<span class="bright">·</span>EYES</strong><small>FIELD OPTICS / Φ369 LABS</small></div>
       </div>
-      <div class="header-right"><span class="node-dot"></span> OFFLINE-FIRST RESEARCH <span class="top-chip">RUNG 02 / SENSOR LAB</span></div>
+      <div class="header-right"><span class="node-dot"></span> OFFLINE-FIRST RESEARCH <span class="top-chip">RUNG 03 / WRIST LINK</span></div>
     </header>
     <main>
       <section class="hero">
@@ -106,7 +106,18 @@
             <div class="slider-label"><label for="left-bias">LEFT OFFSET</label><output id="left-bias-value" for="left-bias">0.00 D</output></div><input id="left-bias" type="range" min="-0.75" max="0.75" step="0.05" value="0">
             <div class="slider-label right-label"><label for="right-bias">RIGHT OFFSET</label><output id="right-bias-value" for="right-bias">0.00 D</output></div><input id="right-bias" type="range" min="-0.75" max="0.75" step="0.05" value="0">
           </div>
-          <div class="wrist-group"><h3>GEN.E.WRIST <span>SIMULATED PREVIEW</span></h3><div class="wrist-buttons"><button type="button" id="wrist-near">FOCUS +0.50 D</button><button type="button" id="wrist-far">FOCUS −0.50 D</button></div><p>Buttons are enabled in Wrist Preview mode. No pairing, networking, or actual device command occurs.</p></div>
+          <div class="wrist-group"><h3>GEN.E.WRIST <span>SIMULATED PREVIEW</span></h3><div class="wrist-buttons"><button type="button" id="wrist-near">FOCUS +0.50 D</button><button type="button" id="wrist-far">FOCUS −0.50 D</button></div>
+            <div class="wrist-link-controls" aria-label="GEN.E.WRIST local SDK demo">
+              <div class="wrist-link-header"><span>WORLDADAPTER API 1 / PINNED SDK</span><strong id="wrist-sdk-state">DISCONNECTED</strong></div>
+              <div class="wrist-buttons">
+                <button type="button" id="wrist-connect">CONNECT VIRTUAL WRIST</button>
+                <button type="button" id="wrist-disconnect" disabled>DISCONNECT</button>
+              </div>
+              <label class="grant-line" for="wrist-grant"><input id="wrist-grant" type="checkbox" disabled> GRANT SIMULATED FOCUS CONTROL</label>
+              <p id="wrist-sdk-status" role="status" aria-live="polite">Enter Wrist Preview and connect to run the real local Gen.E.Wrist permission system.</p>
+              <p class="wrist-live">SDK FOCUS FIELD: <output id="wrist-live-focus">—</output></p>
+              <p class="wrist-warning">NO PHYSICAL DEVICE, BLUETOOTH, NETWORK PAIRING OR CROSS-SITE SESSION.</p>
+            </div></div>
           <div class="bottom-actions"><button type="button" id="reset">RESET LAB</button><button type="button" id="export">EXPORT LAB STATE ↓</button></div>
         </div>
       </section>

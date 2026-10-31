@@ -6,5 +6,6 @@ await rm(out, { recursive: true, force: true });
 await mkdir(out, { recursive: true });
 for (const file of ["index.html", "styles.css"]) await cp(resolve(root, file), resolve(out, file));
 await cp(resolve(root, "src"), resolve(out, "src"), { recursive: true });
+await cp(resolve(root, "vendor"), resolve(out, "vendor"), { recursive: true });
 await writeFile(resolve(out, ".nojekyll"), "");
 console.log("Opti-Eyes static build: dist/");

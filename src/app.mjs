@@ -1,13 +1,15 @@
 import { LIMITS } from "./optics.mjs";
 import { assessLaboratoryState } from "./sensor-model.mjs";
 import { applyWristPreviewStep, createDemoStatus } from "./wrist-bridge.mjs";
+import { createOptiEyesWristSession } from "./wrist-session.mjs";
 
 const byId = (id) => document.getElementById(id);
 const state = { mode: "manual", distanceM: 0.65, manualAddD: 1.5, leftOffsetD: 0, rightOffsetD: 0, sensorCondition: "clear" };
+let wristSession = null;
 const labels = {
   manual: "Directly adjust the simulated focus actuator.",
   adaptive: "Test synthetic sensor confidence, staleness, range limits and manual backup. No physical sensor is used.",
-  wrist: "Preview capability-gated Gen.E.Wrist commands locally. No device connection exists."
+  wrist: "Connect the pinned Gen.E.Wrist SDK, explicitly grant simulated control, and exercise the real permission checks. No physical pairing."
 };
 const round2 = (n) => (Math.round(n * 100) / 100).toFixed(2);
 const signed = (n) => (n > 0 ? "+" : "") + round2(n) + " D";
@@ -47,8 +49,11 @@ function render() {
     : result.actuatorLimited ? "LIMIT REACHED: this hypothetical 0–3 D element cannot match the selected near-demand value."
     : "Residual is a model difference, NOT a measurement of visual acuity or lens performance.";
   // Manual slider remains active in adaptive mode as an explicit backup setting.
-  byId("wrist-near").disabled = state.mode !== "wrist";
-  byId("wrist-far").disabled = state.mode !== "wrist";
+  const canCommand = state.mode === "wrist" && Boolean(wristSession);
+  byId("wrist-near").disabled = !canCommand;
+  byId("wrist-far").disabled = !canCommand;
+  wristSession?.publish();
+  renderWristPanel();
   document.querySelectorAll("[data-mode]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.mode === state.mode)));
   // Schematic only: conveys an intuitive change, never claims physical ray tracing.
   const amplitude = 6 + result.baseAddD * 6;
@@ -62,16 +67,75 @@ numberInput("manual-add", "manualAddD");
 numberInput("left-bias", "leftOffsetD");
 numberInput("right-bias", "rightOffsetD");
 byId("sensor-scenario").addEventListener("change", () => { state.sensorCondition = byId("sensor-scenario").value; render(); });
-document.querySelectorAll("[data-mode]").forEach((button) => button.addEventListener("click", () => { state.mode = button.dataset.mode; render(); }));
-function focusStep(delta) {
-  if (state.mode !== "wrist") return;
-  state.manualAddD = applyWristPreviewStep(state.manualAddD, delta);
-  byId("manual-add").value = String(state.manualAddD);
-  render();
+function disconnectWrist(reason) {
+  const old = wristSession;
+  wristSession = null;
+  old?.disconnect();
+  byId("wrist-grant").checked = false;
+  if (reason) byId("wrist-sdk-status").textContent = reason;
+  renderWristPanel();
 }
-byId("wrist-near").addEventListener("click", () => focusStep(0.5));
-byId("wrist-far").addEventListener("click", () => focusStep(-0.5));
+function renderWristPanel() {
+  const snapshot = wristSession?.snapshot();
+  const connected = Boolean(snapshot);
+  const granted = connected && snapshot.grants.includes("adjust-focus");
+  byId("wrist-sdk-state").textContent = !connected ? "DISCONNECTED" : granted ? "CONNECTED / GRANTED" : "CONNECTED / LOCKED";
+  byId("wrist-connect").disabled = connected || state.mode !== "wrist";
+  byId("wrist-disconnect").disabled = !connected;
+  byId("wrist-grant").disabled = !connected;
+  byId("wrist-grant").checked = Boolean(granted);
+  byId("wrist-live-focus").textContent = connected ? Number(snapshot.status["focus-d"]).toFixed(2) + " D" : "—";
+}
+document.querySelectorAll("[data-mode]").forEach((button) => button.addEventListener("click", () => {
+  if (state.mode === "wrist" && button.dataset.mode !== "wrist") disconnectWrist("Exited Wrist Preview. Session closed and permission revoked.");
+  state.mode = button.dataset.mode;
+  render();
+}));
+byId("wrist-connect").addEventListener("click", () => {
+  if (wristSession || state.mode !== "wrist") return;
+  try {
+    wristSession = createOptiEyesWristSession({
+      readLab: () => ({ ...state }),
+      applyStep: (delta) => {
+        state.manualAddD = applyWristPreviewStep(state.manualAddD, delta);
+        byId("manual-add").value = String(state.manualAddD);
+        render();
+      },
+      onChange: renderWristPanel
+    });
+    byId("wrist-sdk-status").textContent = "Local SDK connected. Focus actions are DENIED until you explicitly grant access.";
+    render();
+  } catch (error) {
+    disconnectWrist("Connection failed: " + error.message);
+  }
+});
+byId("wrist-grant").addEventListener("change", () => {
+  if (!wristSession) { byId("wrist-grant").checked = false; return; }
+  try {
+    wristSession.setGranted(byId("wrist-grant").checked);
+    byId("wrist-sdk-status").textContent = byId("wrist-grant").checked ?
+      "Explicit grant active. Simulated focus commands now use Gen.E.Wrist's guarded requestWorldAction." :
+      "Permission revoked. Focus actions are denied again.";
+  } catch (error) {
+    byId("wrist-sdk-status").textContent = error.message;
+  }
+  renderWristPanel();
+});
+byId("wrist-disconnect").addEventListener("click", () => disconnectWrist("Local SDK disconnected. Grants revoked and subscriptions released."));
+async function sendWristCommand(actionId) {
+  if (state.mode !== "wrist" || !wristSession) return;
+  try {
+    await wristSession.requestAction(actionId);
+    byId("wrist-sdk-status").textContent = "Approved simulated action completed: " + actionId + ".";
+  } catch (error) {
+    byId("wrist-sdk-status").textContent = "Action DENIED: " + error.message;
+  }
+  renderWristPanel();
+}
+byId("wrist-near").addEventListener("click", () => sendWristCommand("focus-near"));
+byId("wrist-far").addEventListener("click", () => sendWristCommand("focus-far"));
 byId("reset").addEventListener("click", () => {
+  disconnectWrist("Laboratory reset. Any virtual wrist grant was revoked.");
   Object.assign(state, { mode: "manual", distanceM: 0.65, manualAddD: 1.5, leftOffsetD: 0, rightOffsetD: 0, sensorCondition: "clear" });
   byId("sensor-scenario").value = "clear";
   for (const [id, value] of [["distance", state.distanceM], ["manual-add", state.manualAddD], ["left-bias", 0], ["right-bias", 0]]) byId(id).value = String(value);
@@ -79,7 +143,7 @@ byId("reset").addEventListener("click", () => {
 });
 byId("export").addEventListener("click", () => {
   const result = assessLaboratoryState(state);
-  const content = JSON.stringify({ kind: "opti-eyes-synthetic-lab", schemaVersion: 2, hardwareConnected: false, syntheticSensorOnly: true, state, result, proposedWristStatus: createDemoStatus(result) }, null, 2);
+  const content = JSON.stringify({ kind: "opti-eyes-synthetic-lab", schemaVersion: 3, hardwareConnected: false, syntheticSensorOnly: true, virtualWristOnly: true, state, result, proposedWristStatus: createDemoStatus(result) }, null, 2);
   const url = URL.createObjectURL(new Blob([content], { type: "application/json" }));
   const anchor = document.createElement("a");
   anchor.href = url; anchor.download = "opti-eyes-lab-simulation.json";
