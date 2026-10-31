@@ -17,7 +17,7 @@
         <span class="brand-mark" aria-hidden="true">Φ</span>
         <div><strong>OPTI<span class="bright">·</span>EYES</strong><small>FIELD OPTICS / Φ369 LABS</small></div>
       </div>
-      <div class="header-right"><span class="node-dot"></span> OFFLINE-FIRST RESEARCH <span class="top-chip">RUNG 01 / SIMULATOR</span></div>
+      <div class="header-right"><span class="node-dot"></span> OFFLINE-FIRST RESEARCH <span class="top-chip">RUNG 02 / SENSOR LAB</span></div>
     </header>
     <main>
       <section class="hero">
@@ -81,8 +81,25 @@
             <button type="button" data-mode="wrist" aria-pressed="false">WRIST*</button>
           </fieldset>
           <p id="mode-help" class="mode-help">Directly adjust the simulated focus actuator.</p>
+          <section class="sensor-panel" aria-label="Synthetic sensor failure testing">
+            <div class="slider-label"><label for="sensor-scenario">SYNTHETIC SENSOR CONDITION</label><output id="sensor-status" role="status" aria-live="polite">NOT ACTIVE</output></div>
+            <select id="sensor-scenario" aria-describedby="sensor-notes" disabled>
+              <option value="clear">Clear / high confidence</option>
+              <option value="biased">Biased / deceptively confident</option>
+              <option value="occluded">Occluded / no reading</option>
+              <option value="noisy">Noisy / low confidence</option>
+              <option value="stale">Stale / old reading</option>
+              <option value="out-of-range">Outside operating range</option>
+            </select>
+            <div class="sensor-metrics">
+              <div><small>READING</small><strong id="sensor-reading">—</strong></div>
+              <div><small>CONFIDENCE</small><strong id="sensor-confidence">—</strong></div>
+              <div><small>AGE</small><strong id="sensor-age">—</strong></div>
+            </div>
+            <p id="sensor-notes">Choose adaptive mode to experiment with synthetic sensor faults.</p>
+          </section>
           <div class="slider-block"><div class="slider-label"><label for="distance">VIEWING DISTANCE</label><output id="distance-value" for="distance">0.65 m</output></div><input id="distance" type="range" min="0.25" max="6" step="0.05" value="0.65"><div class="ends"><span>NEAR / 0.25 M</span><span>FAR / 6 M</span></div></div>
-          <div class="slider-block"><div class="slider-label"><label for="manual-add">FOCUS ACTUATOR (SIMULATED)</label><output id="manual-value" for="manual-add">1.50 D</output></div><input id="manual-add" type="range" min="0" max="3" step="0.05" value="1.5"><div class="ends"><span>0.00 D</span><span>3.00 D</span></div></div>
+          <div class="slider-block"><div class="slider-label"><label for="manual-add" id="manual-add-label">FOCUS ACTUATOR (SIMULATED)</label><output id="manual-value" for="manual-add">1.50 D</output></div><input id="manual-add" type="range" min="0" max="3" step="0.05" value="1.5"><div class="ends"><span>0.00 D</span><span>3.00 D</span></div></div>
           <div class="calibration">
             <h3>Per-eye research offsets</h3>
             <p>Illustrative independent offsets only. Never use these values as a prescription or fitting measurement.</p>

@@ -16,6 +16,12 @@ A dependency-free, GitHub Pages-ready browser simulator. It demonstrates the rel
 
 **This is not an eyeglass prescription calculator, a medical device, or a working autofocus/UV-filtering product.** The simulation is deliberately simplified. No optical or clinical outcomes are claimed, and the prototype should never be used for driving or safety-critical vision tasks.
 
+## Rung 2: Sensor-fault simulator
+
+Adaptive mode now offers six synthetic sensor conditions: clear, confidently biased, occluded, noisy, stale, and out-of-range. A deterministic validation gate accepts or rejects each sample and visibly reverts to the **manual-backup slider setting** when rejected. The high-confidence biased case deliberately passes, illustrating the limitation of a simple gate. A new synthetic telemetry panel reports distance, confidence, age, and decision. The optional export labels its report as schema v2, synthetic, with no hardware attached.
+
+**This is not verified autofocus, safe physical fallback, optical correction, or a medical device.** See [Sensor Bench](docs/SENSOR_BENCH.md).
+
 ## Run
 
 Open `index.html` in a modern browser, or serve this directory using a static HTTP server.
