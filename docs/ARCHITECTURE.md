@@ -1,4 +1,4 @@
-# Architecture / Rungs 1–6
+# Architecture / Rungs 1–7
 
 Opti-Eyes owns an **optical research simulator** today. Hardware design, physical autofocus, XR integration, sensor fusion, prescription adaptation and actual device pairing are **future research**, not working capabilities.
 
@@ -6,6 +6,8 @@ Opti-Eyes owns an **optical research simulator** today. Hardware design, physica
 - `src/frame-model.mjs`: pure bounded geometry model and local concept export generators.
 - `src/component-model.mjs`: pure editable, explicitly unverified power/energy/mass arithmetic and evidence gates.
 - `src/optical-bench.mjs`: pure trial/schema validation, user criteria comparison, deterministic synthetic fixtures, source-aware research exports.
+- `src/hardware-architecture.mjs`: six component slots, unverified sourcing schema, nine verification gates, and in-memory mock protocol state machine.
+- `src/architecture-studio.mjs`: optional manual candidate register, simulated protocol UI, and user-triggered local receipt export.
 - `src/bench-studio.mjs`: manual record-entry UI and in-memory ledger with no hardware or persistence.
 - `src/component-studio.mjs`: isolated UI controls, optical-mechanism profile sync, and local research receipt export.
 - `src/hardware-studio.mjs`: isolated browser parametric controls and export buttons, no shared wrist/sensor state.
