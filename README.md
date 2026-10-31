@@ -35,6 +35,12 @@ See [Real SDK Bridge](docs/RUNG3_WRIST_RUNTIME.md) and [pinned upstream provenan
 A standalone parametric front-and-side geometry sketch with six bounded dimensions and four optomechanical architecture research options. Exports are local: vector SVG, OpenSCAD source for **non-wearable bench geometry only**, and JSON with explicit safety/fit disclaimers.
 
 This does not provide optical alignment, interpupillary distance fitting, certified lenses, a safe wearable frame, or a physical device. Review the Rung 4 design specification in docs/RUNG4_HARDWARE_STUDIO.md.
+ 
+## Rung 5: Component Engineering Lab
+
+A new **offline, editable power/energy/mass budget** helps explore hypothetical electronics and optical mechanism choices. Inputs include battery nominal capacity/voltage/usable fraction, separate compute/sensor/optic/display power assumptions, actuation duty cycle, and component-group mass guesses. The selected Rung 4 optical mechanism determines a starting **illustrative profile**, while all values remain editable. Three duty-cycle sensitivity rows illustrate how actuator usage changes arithmetic runtime. An evidence register identifies what real datasheets/bench tests remain missing.
+
+**None of the defaults are measured component specifications, BOM quotations, real battery predictions, thermal behavior, eye-safe actuators, wearable fitting or approval to build a physical device.** The JSON export carries this uncertainty and all unverified gates. See [Rung 5 Engineering Notes](docs/RUNG5_COMPONENT_ENGINEERING.md).
 
 ## Run
 

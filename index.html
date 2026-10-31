@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./styles.css">
   <script type="module" src="./src/app.mjs"></script>
   <script type="module" src="./src/hardware-studio.mjs"></script>
+  <script type="module" src="./src/component-studio.mjs"></script>
 </head>
 <body>
   <a class="skip" href="#lab">Skip to focus controls</a>
@@ -18,7 +19,7 @@
         <span class="brand-mark" aria-hidden="true">Φ</span>
         <div><strong>OPTI<span class="bright">·</span>EYES</strong><small>FIELD OPTICS / Φ369 LABS</small></div>
       </div>
-      <div class="header-right"><span class="node-dot"></span> OFFLINE-FIRST RESEARCH <span class="top-chip">RUNG 04 / DESIGN STUDIO</span></div>
+      <div class="header-right"><span class="node-dot"></span> OFFLINE-FIRST RESEARCH <span class="top-chip">RUNG 05 / COMPONENT LAB</span></div>
     </header>
     <main>
       <section class="hero">
@@ -175,7 +176,66 @@
         </div>
       </section>
 
-      <section class="systems"><div class="section-head"><div><p class="eyebrow">06 / PLATFORM VISION</p><h2>One system. Six research tracks.</h2></div><p>No speculative hardware features are shown as working.</p></div>
+<section id="components" class="component-section" aria-labelledby="component-title">
+  <div class="section-head"><div><p class="eyebrow">06 / ELECTRONICS & OPTOMECHANICAL RESEARCH</p><h2 id="component-title">Component Engineering Lab</h2></div><p>Editable sandbox assumptions. Real specifications must come from measured parts and cited datasheets.</p></div>
+  <div class="ce-banner" role="note"><strong>NO REAL COMPONENTS CONNECTED.</strong> All starting values are invented demonstration inputs, not real component specifications, component recommendations, thermal tests or battery-life promises.</div>
+  <div class="component-grid">
+    <article class="hw-panel">
+      <div class="panel-top"><div><p class="eyebrow">CONCEPTUAL SYSTEM FLOW</p><h2>Power and packaging</h2></div><span class="microchip">ASSUMPTIONS ONLY</span></div>
+      <div class="ce-flow" aria-label="Conceptual design: battery to protection, controller, sensor and optional display and optic">
+        <span>BATTERY</span><span>PROTECTION / REGULATION</span><span>LOCAL CONTROL</span><span>SENSOR + OPTIC + DISPLAY</span>
+      </div>
+      <div class="ce-metrics">
+        <div><small>AVERAGE DRAW</small><strong id="ce-draw">—</strong></div>
+        <div><small>MODELED PEAK</small><strong id="ce-peak">—</strong></div>
+        <div><small>DERATED ENERGY</small><strong id="ce-energy">—</strong></div>
+        <div><small>IDEALIZED RUNTIME</small><strong id="ce-hours">—</strong></div>
+        <div><small>SUMMED MASS</small><strong id="ce-mass">—</strong></div>
+        <div><small>NOMINAL PEAK CURRENT</small><strong id="ce-current">—</strong></div>
+      </div>
+      <p id="ce-target-status" class="ce-note" role="status" aria-live="polite">Mass comparison is not a fit or comfort assessment.</p>
+      <div class="ce-scenarios">
+        <h3>Duty-cycle sensitivity</h3><p>All three use the current assumptions, with actuation at 5%, 25%, or 60%.</p>
+        <table><thead><tr><th scope="col">Scenario</th><th scope="col">Arithmetic runtime</th></tr></thead>
+        <tbody><tr><th scope="row">Occasional / 5%</th><td id="ce-runtime-0">—</td></tr>
+        <tr><th scope="row">Mixed / 25%</th><td id="ce-runtime-1">—</td></tr>
+        <tr><th scope="row">Frequent / 60%</th><td id="ce-runtime-2">—</td></tr></tbody></table>
+      </div>
+      <p class="hw-warning">No thermal model, regulator efficiency curve, actual discharge profile, cell protection, measured motion or optical performance. Runtime and mass are not verified.</p>
+    </article>
+    <article class="hw-panel">
+      <div class="panel-top"><div><p class="eyebrow">EDIT YOUR ASSUMPTIONS</p><h2>Virtual bill of materials</h2></div><span class="microchip mint">LOCAL</span></div>
+      <div class="ce-editor">
+        <p id="ce-mechanism" class="ce-profile">Optics profile</p>
+        <p>Changing the optical architecture in the frame studio resets only the hypothetical optic draw/mass inputs. Every slider can be overridden.</p>
+        <h3>Power model</h3>
+        <div class="ce-field"><label for="ce-batteryMah">NOMINAL BATTERY CAPACITY <output id="ce-batteryMah-value">450</output> mAh</label><input id="ce-batteryMah" type="range" min="100" max="1500" step="25" value="450"></div>
+<div class="ce-field"><label for="ce-batteryV">NOMINAL BATTERY VOLTAGE <output id="ce-batteryV-value">3.7</output> V</label><input id="ce-batteryV" type="range" min="3" max="4.3" step="0.1" value="3.7"></div>
+<div class="ce-field"><label for="ce-usablePct">USABLE ENERGY ASSUMPTION <output id="ce-usablePct-value">80</output> %</label><input id="ce-usablePct" type="range" min="50" max="95" step="5" value="80"></div>
+<div class="ce-field"><label for="ce-controllerMw">CONTROLLER + LOCAL COMPUTE <output id="ce-controllerMw-value">80</output> mW</label><input id="ce-controllerMw" type="range" min="10" max="600" step="5" value="80"></div>
+<div class="ce-field"><label for="ce-sensorMw">DISTANCE SENSOR DRAW <output id="ce-sensorMw-value">45</output> mW</label><input id="ce-sensorMw" type="range" min="0" max="500" step="5" value="45"></div>
+<div class="ce-field"><label for="ce-actuatorIdleMw">OPTIC ACTUATOR IDLE DRAW <output id="ce-actuatorIdleMw-value">10</output> mW</label><input id="ce-actuatorIdleMw" type="range" min="0" max="350" step="5" value="10"></div>
+<div class="ce-field"><label for="ce-actuatorStepMw">ADDITIONAL ACTIVE ACTUATION <output id="ce-actuatorStepMw-value">420</output> mW</label><input id="ce-actuatorStepMw" type="range" min="0" max="1800" step="10" value="420"></div>
+<div class="ce-field"><label for="ce-displayMw">OPTIONAL DISPLAY DRAW <output id="ce-displayMw-value">0</output> mW</label><input id="ce-displayMw" type="range" min="0" max="1500" step="10" value="0"></div>
+<div class="ce-field"><label for="ce-dutyPct">ACTUATION DUTY CYCLE <output id="ce-dutyPct-value">20</output> %</label><input id="ce-dutyPct" type="range" min="0" max="100" step="5" value="20"></div>
+        <h3>Mass model</h3>
+        <div class="ce-field"><label for="ce-frameG">FRAME MASS ASSUMPTION <output id="ce-frameG-value">24</output> g</label><input id="ce-frameG" type="range" min="5" max="90" step="1" value="24"></div>
+<div class="ce-field"><label for="ce-opticsG">OPTICS MASS ASSUMPTION <output id="ce-opticsG-value">30</output> g</label><input id="ce-opticsG" type="range" min="5" max="120" step="1" value="30"></div>
+<div class="ce-field"><label for="ce-electronicsG">ELECTRONICS MASS ASSUMPTION <output id="ce-electronicsG-value">16</output> g</label><input id="ce-electronicsG" type="range" min="1" max="90" step="1" value="16"></div>
+<div class="ce-field"><label for="ce-batteryG">BATTERY MASS ASSUMPTION <output id="ce-batteryG-value">14</output> g</label><input id="ce-batteryG" type="range" min="2" max="65" step="1" value="14"></div>
+<div class="ce-field"><label for="ce-targetMassG">ILLUSTRATIVE MASS TARGET <output id="ce-targetMassG-value">85</output> g</label><input id="ce-targetMassG" type="range" min="35" max="220" step="5" value="85"></div>
+        <div class="ce-actions"><button id="ce-reset" type="button">RESET ASSUMPTIONS</button><button id="ce-export" type="button">EXPORT RESEARCH RECEIPT</button></div>
+      </div>
+    </article>
+  </div>
+  <article class="hw-panel ce-gate-panel">
+    <div><p class="eyebrow">07 / EVIDENCE REGISTER</p><h2>What we still need to measure</h2>
+      <p>Every category remains unverified until actual component datasheets and independently collected bench results are attached. Arithmetic isn't a safety certificate.</p>
+    </div>
+    <ol id="ce-gates" class="ce-gates"></ol>
+  </article>
+</section>
+      <section class="systems"><div class="section-head"><div><p class="eyebrow">08 / PLATFORM VISION</p><h2>One system. Six research tracks.</h2></div><p>No speculative hardware features are shown as working.</p></div>
         <div class="system-grid">
           <article><span>01 / OPTICS</span><h3>Variable focus</h3><p>Model focal demand and individual eye actuation.</p><small>SOFTWARE SIMULATION</small></article>
           <article><span>02 / SENSING</span><h3>Distance awareness</h3><p>Investigate sensor reliability and lost-signal behavior.</p><small>FUTURE HARDWARE</small></article>
