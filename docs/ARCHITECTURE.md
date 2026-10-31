@@ -1,14 +1,19 @@
-# Architecture / Rung 1
+# Architecture / Rungs 1–2
 
 Opti-Eyes owns an **optical research simulator** today. Hardware design, physical autofocus, XR integration, sensor fusion, prescription adaptation and actual device pairing are **future research**, not working capabilities.
 
 - `src/optics.mjs`: pure deterministic idealized demand/actuator calculations.
+- `src/sensor-model.mjs`: deterministic sensor fault fixtures, gate decisions, and visible manual fallback.
 - `src/app.mjs`: accessible same-origin UI; input comes exclusively from the user's range controls and mode buttons.
 - `src/wrist-bridge.mjs`: pure proposal for a Gen.E.Wrist v1 **demo** manifest and allowlisted synthetic status.
 - `tests/`: Node built-in tests for numerical boundaries and preview interface.
 - `scripts/build.mjs`: dependency-free static Pages artifact.
 
 All lab state is in memory and reset on reload. No localStorage, telemetry, fetch, cookies, camera, audio, background sensors, physical-device API, or remote AI. Export happens only on explicit click. No clinical data is requested.
+
+## Rung 2 sensor boundaries
+
+The sensor fixtures are triggered by a user-selected dropdown, with no timers or background sampling. A failed reading uses the user-chosen backup; ground truth stays in the mathematical model only to expose a mismatch. Confidence and age gates are illustrative, and a high-confidence biased sample intentionally passes. Gen.E.Wrist remains unchanged and there is still no physical device connection.
 
 ## Model limitations
 
