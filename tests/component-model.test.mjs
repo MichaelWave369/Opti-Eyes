@@ -53,10 +53,12 @@ test("export cannot claim verified datasheets or wearable safety",()=>{
 test("new component UI is wired without removing Focus or Wrist controls",async()=>{
  const html=await readFile(new URL("../index.html",import.meta.url),"utf8");
  const js=await readFile(new URL("../src/component-studio.mjs",import.meta.url),"utf8");
- for(const id of ["ce-mechanism","ce-draw","ce-peak","ce-energy","ce-hours","ce-mass","ce-target-status","ce-current","ce-export","ce-reset","ce-gates","ce-runtime-0","ce-runtime-1","ce-runtime-2"]){
+ for(const id of ["ce-mechanism","ce-draw","ce-peak","ce-energy","ce-hours","ce-mass","ce-target-status","ce-current","ce-export","ce-reset","ce-gates"]){
   assert.ok(html.includes('id="'+id+'"'),id);
   assert.ok(js.includes('el("'+id+'")'),id);
  }
+ for(let i=0;i<3;i++)assert.ok(html.includes('id="ce-runtime-'+i+'"'));
+ assert.match(js,/el\("ce-runtime-"\+i\)/);
  for(const k of Object.keys(LIMITS)){
   assert.ok(html.includes('id="ce-'+k+'"'),k);
   assert.ok(html.includes('id="ce-'+k+'-value"'),k);
