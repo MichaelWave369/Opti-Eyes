@@ -121,3 +121,40 @@
 .bench-overflow td{color:#d2e7e6}.bench-overflow tbody tr:hover{background:#17333c}
 @media(max-width:850px){.bench-grid{grid-template-columns:1fr}}
 @media(max-width:540px){.bench-form-grid{grid-template-columns:1fr}.bench-summary{grid-template-columns:repeat(2,1fr)}}
+
+/* Rung 7 / evidence-first hardware architecture */
+.arch-section{padding-top:15px}
+.arch-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.arch-card,.arch-register{padding:22px}
+.arch-card h3,.arch-register h3{font-size:20px;color:#e8f7f1;margin:8px 0 14px}
+.arch-card p:not(.eyebrow),.arch-bottom p{font:12px/1.65 system-ui;color:#a9c4c5}
+.arch-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:20px 0}
+.arch-summary span,.arch-numbers span{background:#12333e;border:1px solid #385863;border-radius:7px;padding:13px 9px;color:#9bbbbb;font:10px/1.6 ui-monospace,Consolas,monospace}
+.arch-summary strong,.arch-numbers strong{display:block;color:#baf6e0;font-size:17px;margin-top:5px}
+.arch-slots,.arch-gates{list-style:none;display:grid;gap:8px;margin:0;padding:0}
+.arch-slots li,.arch-gates li{background:#102e38;border:1px solid #31525e;border-radius:8px;padding:12px}
+.arch-slots strong,.arch-gates strong{display:block;color:#d6efea;font:12px/1.5 ui-monospace,Consolas,monospace}
+.arch-slots span,.arch-gates span{display:block;color:#a2bcbf;font:11px/1.55 system-ui;margin-top:5px}
+.arch-gates strong{color:#d9b788}
+.arch-field{margin:16px 0}
+.arch-field label{display:block;font:11px/1.5 ui-monospace,Consolas,monospace;color:#bbd1d2;margin-bottom:7px}
+.arch-field input,.arch-field select,.arch-field textarea{display:block;width:100%;color:#e8f7ed;background:#0a222c;border:1px solid #47646c;border-radius:7px;padding:10px 12px;font:14px/1.5 system-ui}
+.arch-primary,.arch-actions button{padding:11px 13px;background:#173943;border:1px solid #52827d;border-radius:7px;color:#d5f5e8;cursor:pointer;font:11px ui-monospace,Consolas,monospace}
+.arch-primary{width:100%;background:#206460}
+.arch-actions button:hover:not(:disabled),.arch-primary:hover{background:#28686c}
+.arch-actions button:disabled{opacity:.46;cursor:not-allowed}
+.arch-register{margin-top:14px}
+.arch-overflow{overflow-x:auto;border:1px solid #2e4d59;border-radius:7px}
+.arch-overflow table{min-width:820px;width:100%;border-collapse:collapse;font:11px/1.5 ui-monospace,Consolas,monospace}
+.arch-overflow th,.arch-overflow td{text-align:left;padding:10px 9px;border-bottom:1px solid #294953;color:#c1dbd9}
+.arch-overflow th{background:#163741}
+.arch-overflow button{color:#f0c5b3;background:#442b2c;border:1px solid #6e4e4f;border-radius:5px;padding:7px;cursor:pointer}
+.arch-second{margin-top:14px}
+.arch-link-line strong{color:#9ce6da}
+.arch-actions{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}
+.arch-grant{display:flex;align-items:center;gap:10px;color:#bae9de;font:12px/1.5 ui-monospace,Consolas,monospace;margin:17px 0}
+.arch-grant input{height:18px;width:18px;accent-color:#83dbce}
+.arch-numbers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.arch-packet{border:1px solid #345762;background:#091c26;border-radius:8px;color:#bfe1db;min-height:110px;padding:15px;white-space:pre-wrap;overflow-wrap:anywhere;font:11px/1.6 ui-monospace,Consolas,monospace}
+.arch-bottom{margin:18px 0 50px;border-top:1px solid #33505c;padding:10px 0;display:flex;gap:24px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+@media(max-width:850px){.arch-grid{grid-template-columns:1fr}.arch-bottom{display:block}}

@@ -48,6 +48,12 @@ A local optical-test recordkeeping studio now compares **synthetic examples** an
 
 **Nothing in Rung 6 is an optical certification, independent verification, usable eyewear design, physical test, real measurement capture or eye-safety assessment.** "Within user criteria" is descriptive only. See [Rung 6 optical bench guide](docs/RUNG6_OPTICAL_BENCH.md).
 
+## Rung 7: Physical Prototype Architecture
+
+A new offline architecture laboratory documents **six component slots**, user-cited (not independently validated) candidate part numbers and datasheet links, and **nine evidence gates** required before a physical prototype can be considered. It also includes a simulated Opti-Eyes ↔ Gen.E.Wrist packet envelope: virtual connect, separate permission grant, sequence-numbered mock command generation, revocation, signal-loss cleanup and no hardware interaction.
+
+**The Rung 7 link is a separate mock protocol design exercise, not a physical radio connection or a change to the actual Gen.E.Wrist SDK.** User-supplied datasheet URLs are not automatically verified. All candidates and gates remain unverified, and export states physical connection/actuation and wearability approval as false. See [Rung 7 Architecture](docs/RUNG7_ARCHITECTURE.md).
+
 ## Run
 
 Open `index.html` in a modern browser, or serve this directory using a static HTTP server.

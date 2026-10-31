@@ -11,6 +11,7 @@
   <script type="module" src="./src/hardware-studio.mjs"></script>
   <script type="module" src="./src/component-studio.mjs"></script>
   <script type="module" src="./src/bench-studio.mjs"></script>
+  <script type="module" src="./src/architecture-studio.mjs"></script>
 </head>
 <body>
   <a class="skip" href="#lab">Skip to focus controls</a>
@@ -20,7 +21,7 @@
         <span class="brand-mark" aria-hidden="true">Φ</span>
         <div><strong>OPTI<span class="bright">·</span>EYES</strong><small>FIELD OPTICS / Φ369 LABS</small></div>
       </div>
-      <div class="header-right"><span class="node-dot"></span> OFFLINE-FIRST RESEARCH <span class="top-chip">RUNG 06 / OPTICAL BENCH</span></div>
+      <div class="header-right"><span class="node-dot"></span> OFFLINE-FIRST RESEARCH <span class="top-chip">RUNG 07 / ARCHITECTURE</span></div>
     </header>
     <main>
       <section class="hero">
@@ -290,7 +291,62 @@
     <p class="hw-warning">Neither a synthetic example nor a manually entered observation is independent verification. "Within criteria" does not mean safe, wearable, medically effective, or legally approved.</p>
   </article>
 </section>
-      <section class="systems"><div class="section-head"><div><p class="eyebrow">09 / PLATFORM VISION</p><h2>One system. Six research tracks.</h2></div><p>No speculative hardware features are shown as working.</p></div>
+
+<section id="hardware-architecture" class="arch-section" aria-labelledby="arch-title">
+ <div class="section-head"><div><p class="eyebrow">09 / BENCH HARDWARE ARCHITECTURE</p><h2 id="arch-title">From concept to testable hardware</h2></div>
+ <p>Evidence-first sourcing register, nine validation gates and an offline command-envelope demonstration.</p></div>
+ <div class="ce-banner" role="note"><strong>NO REAL HARDWARE LINK.</strong> This section does not control glasses, motors, batteries, Bluetooth, USB, serial ports, or the separate GEN.E.WRIST site. A cited datasheet is not independent verification.</div>
+ <div class="arch-grid">
+  <article class="hw-panel arch-card">
+   <p class="eyebrow">01 / ARCHITECTURE MAP</p><h3>Six physical research slots</h3>
+   <p>Every slot begins missing. Add research candidates with manufacturer part numbers and optional official document links. Everything remains unverified.</p>
+   <div class="arch-summary"><span>Covered slots <strong id="arch-covered">0 / 6</strong></span><span>User-cited <strong id="arch-cited">0</strong></span><span>Verified <strong id="arch-verified">0</strong></span></div>
+   <ol id="arch-slots" class="arch-slots"></ol>
+  </article>
+  <article class="hw-panel arch-card">
+   <p class="eyebrow">02 / USER-CITED SOURCING</p><h3>Register a candidate</h3>
+   <form id="arch-form">
+    <div class="arch-field"><label for="arch-slot">COMPONENT SLOT</label>
+     <select id="arch-slot"><option value="optic">Optical element</option><option value="distance">Distance sensing</option><option value="compute">Local controller</option><option value="actuation">Actuation / driver</option><option value="power">Power / protection</option><option value="fixture">Optical test fixture</option></select></div>
+    <div class="arch-field"><label for="arch-maker">MANUFACTURER / SOURCE NAME</label><input id="arch-maker" required maxlength="140" placeholder="Manufacturer name, not vetted"></div>
+    <div class="arch-field"><label for="arch-part">PART NUMBER / REFERENCE</label><input id="arch-part" required maxlength="140" placeholder="Part or research identifier"></div>
+    <div class="arch-field"><label for="arch-revision">DOCUMENT REVISION (OPTIONAL)</label><input id="arch-revision" maxlength="60" placeholder="e.g. rev A"></div>
+    <div class="arch-field"><label for="arch-url">HTTPS DATASHEET URL (OPTIONAL)</label><input id="arch-url" type="url" maxlength="800" placeholder="https://example.org/datasheet.pdf"></div>
+    <div class="arch-field"><label for="arch-notes">RESEARCH NOTES (OPTIONAL)</label><textarea id="arch-notes" maxlength="240" rows="2" placeholder="Evidence gaps, measurements to request"></textarea></div>
+    <button type="submit" class="arch-primary">ADD UNVERIFIED CANDIDATE</button>
+   </form>
+   <p id="arch-feedback" role="status" aria-live="polite" class="ce-note">No part records added. No vendor claims have been checked.</p>
+  </article>
+ </div>
+ <article class="hw-panel arch-register">
+  <p class="eyebrow">03 / BOUND RECORDS</p><h3>Source provenance ledger</h3>
+  <div class="arch-overflow"><table><thead><tr><th scope="col">ID</th><th scope="col">Slot</th><th scope="col">Source</th><th scope="col">Part</th><th scope="col">Revision</th><th scope="col">Evidence status</th><th scope="col">Action</th></tr></thead><tbody id="arch-records"></tbody></table></div>
+  <p id="arch-empty">No candidate records yet.</p>
+ </article>
+ <div class="arch-grid arch-second">
+  <article class="hw-panel arch-card">
+   <p class="eyebrow">04 / SIMULATED OPTI-EYES ↔ GEN.E.WRIST ENVELOPE</p><h3>Local protocol demonstrator</h3>
+   <p>This is a **separate design exercise**, not the earlier Gen.E.Wrist SDK bridge. It creates in-memory mock focus packets only after explicit permission. No data is transmitted.</p>
+   <p class="arch-link-line">LINK: <strong id="arch-link-status">OFFLINE</strong></p>
+   <div class="arch-actions"><button id="arch-link-connect" type="button">CONNECT MOCK</button><button id="arch-link-disconnect" type="button" disabled>DISCONNECT</button><button id="arch-link-drop" type="button" disabled>SIMULATE SIGNAL LOSS</button></div>
+   <label class="arch-grant" for="arch-link-grant"><input id="arch-link-grant" type="checkbox" disabled> EXPLICIT SIMULATION GRANT</label>
+   <div class="arch-actions"><button id="arch-link-near" type="button" disabled>SIMULATE FOCUS +0.5 D</button><button id="arch-link-far" type="button" disabled>SIMULATE FOCUS -0.5 D</button></div>
+   <div class="arch-numbers"><span>LAST SEQUENCE <strong id="arch-link-seq">0</strong></span><span>DEMO FOCUS <strong id="arch-link-focus">1.50 D</strong></span></div>
+   <pre id="arch-link-packet" class="arch-packet">No mock command packet issued.</pre>
+   <p id="arch-link-feedback" class="ce-note" role="status" aria-live="polite">No commands transmitted.</p>
+  </article>
+  <article class="hw-panel arch-card">
+   <p class="eyebrow">05 / NINE REVIEW GATES</p><h3>Proof before a prototype</h3>
+   <p>Every gate is deliberately marked NOT VERIFIED. Simulated link behavior never establishes a safe physical actuator or eye-facing prototype.</p>
+   <ol id="arch-gates" class="arch-gates"></ol>
+  </article>
+ </div>
+ <div class="arch-bottom">
+  <p>All records and simulated states exist only in this browser tab. Export before reloading. No cloud, accounts, or device permissions.</p>
+  <div class="arch-actions"><button id="arch-export" type="button">EXPORT ARCHITECTURE JSON</button><button id="arch-reset" type="button">CLEAR ARCHITECTURE LAB</button></div>
+ </div>
+</section>
+      <section class="systems"><div class="section-head"><div><p class="eyebrow">10 / PLATFORM VISION</p><h2>One system. Six research tracks.</h2></div><p>No speculative hardware features are shown as working.</p></div>
         <div class="system-grid">
           <article><span>01 / OPTICS</span><h3>Variable focus</h3><p>Model focal demand and individual eye actuation.</p><small>SOFTWARE SIMULATION</small></article>
           <article><span>02 / SENSING</span><h3>Distance awareness</h3><p>Investigate sensor reliability and lost-signal behavior.</p><small>FUTURE HARDWARE</small></article>
