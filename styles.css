@@ -56,3 +56,43 @@
 .hw-export button:hover,.hw-controls button:hover{border-color:#7ed8ce;background:#1b4550}
 @media(max-width:970px){.hardware-grid{grid-template-columns:1fr}}
 @media(max-width:650px){.hardware-lower{grid-template-columns:1fr}.hw-figures{grid-template-columns:1fr 1fr}}
+
+/* Rung 5 / component assumptions and evidence register */
+.component-section{padding-top:14px}
+.ce-banner{border-left:3px solid #dcad78;background:#c8986320;color:#e4c6a6;padding:14px 16px;margin:0 0 16px;font:11px/1.6 ui-monospace,Consolas,monospace;letter-spacing:.025em}
+.ce-banner strong{color:#f2d2a4}
+.component-grid{display:grid;grid-template-columns:minmax(0,1.13fr) minmax(345px,.87fr);gap:14px}
+.ce-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:20px 17px 12px}
+.ce-flow span{display:flex;align-items:center;justify-content:center;min-height:72px;padding:8px;color:#b7eadb;background:#13333c;border:1px solid #3b6670;border-radius:8px;text-align:center;font:10px/1.45 ui-monospace,Consolas,monospace}
+.ce-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px 17px}
+.ce-metrics div{background:#102b35;border:1px solid #2e4e58;border-radius:7px;padding:15px 9px}
+.ce-metrics small{display:block;font:10px/1.5 ui-monospace,Consolas,monospace;color:#9cbdc1}
+.ce-metrics strong{display:block;margin-top:10px;font:clamp(16px,2vw,23px) ui-monospace,Consolas,monospace;color:#b8f2df}
+.ce-note{padding:0 17px;color:#c4d8d6;font:12px/1.6 ui-monospace,Consolas,monospace}
+.ce-scenarios{margin:20px 17px;padding:18px;border:1px solid #31515b;border-radius:9px}
+.ce-scenarios h3,.ce-editor h3{font-size:15px;color:#e9f6ee;margin:0 0 12px}
+.ce-scenarios p,.ce-editor p{font:12px/1.6 system-ui;color:#9ebac0}
+.ce-scenarios table{width:100%;border-collapse:collapse;margin-top:14px;font:12px/1.5 ui-monospace,Consolas,monospace;text-align:left}
+.ce-scenarios th,.ce-scenarios td{border-bottom:1px solid #335059;padding:10px 4px}
+.ce-scenarios th{font-weight:500;color:#aac8c8}
+.ce-scenarios td{color:#e9f6eb;text-align:right}
+.ce-editor{padding:7px 22px 24px}
+.ce-editor h3{border-top:1px solid #33525c;padding-top:18px;margin-top:22px}
+.ce-profile{color:#95e5d2!important;font:11px/1.5 ui-monospace,Consolas,monospace!important}
+.ce-field{margin-top:15px}
+.ce-field label{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;font:10px/1.5 ui-monospace,Consolas,monospace;color:#bad2d3}
+.ce-field output{color:#a7f3dd;margin-left:auto;font-weight:bold}
+.ce-field input{width:100%;margin-top:9px}
+.ce-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.ce-actions button{flex:1;padding:12px;background:#17353f;border:1px solid #4a7174;color:#c9eee7;border-radius:8px;cursor:pointer;font:10px ui-monospace,Consolas,monospace}
+.ce-actions button:hover{border-color:#8bdbd0}
+.ce-gate-panel{display:grid;grid-template-columns:minmax(0,.65fr) minmax(0,1.35fr);gap:22px;padding:25px;margin-top:14px}
+.ce-gate-panel h2{color:#eef9f2;font-size:21px;margin:6px 0}
+.ce-gate-panel p:not(.eyebrow){font:13px/1.6 system-ui;color:#a1bcbf}
+.ce-gates{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;padding:0;list-style:none}
+.ce-gates li{background:#12303b;border:1px solid #31535e;border-radius:9px;padding:13px}
+.ce-gates strong,.ce-gates span{display:block}
+.ce-gates strong{font:11px/1.5 ui-monospace,Consolas,monospace;color:#dfb68c}
+.ce-gates span{font:12px/1.55 system-ui;color:#a8c7c7;margin-top:7px}
+@media(max-width:1100px){.component-grid{grid-template-columns:1fr}.ce-gate-panel{grid-template-columns:1fr}}
+@media(max-width:650px){.ce-flow{grid-template-columns:repeat(2,1fr)}.ce-metrics{grid-template-columns:repeat(2,1fr)}.ce-gates{grid-template-columns:1fr}}
