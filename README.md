@@ -30,6 +30,12 @@ No action is permitted on connect. Leaving Wrist Preview, resetting the lab, or 
 
 See [Real SDK Bridge](docs/RUNG3_WRIST_RUNTIME.md) and [pinned upstream provenance](vendor/genewrist/README.md).
 
+## Rung 4: Browser Hardware Design Studio
+
+A standalone parametric front-and-side geometry sketch with six bounded dimensions and four optomechanical architecture research options. Exports are local: vector SVG, OpenSCAD source for **non-wearable bench geometry only**, and JSON with explicit safety/fit disclaimers.
+
+This does not provide optical alignment, interpupillary distance fitting, certified lenses, a safe wearable frame, or a physical device. Review the Rung 4 design specification in docs/RUNG4_HARDWARE_STUDIO.md.
+
 ## Run
 
 Open `index.html` in a modern browser, or serve this directory using a static HTTP server.

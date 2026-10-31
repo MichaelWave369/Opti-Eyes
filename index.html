@@ -8,6 +8,7 @@
   <title>Opti-Eyes | Focus Lab</title>
   <link rel="stylesheet" href="./styles.css">
   <script type="module" src="./src/app.mjs"></script>
+  <script type="module" src="./src/hardware-studio.mjs"></script>
 </head>
 <body>
   <a class="skip" href="#lab">Skip to focus controls</a>
@@ -17,7 +18,7 @@
         <span class="brand-mark" aria-hidden="true">Φ</span>
         <div><strong>OPTI<span class="bright">·</span>EYES</strong><small>FIELD OPTICS / Φ369 LABS</small></div>
       </div>
-      <div class="header-right"><span class="node-dot"></span> OFFLINE-FIRST RESEARCH <span class="top-chip">RUNG 03 / WRIST LINK</span></div>
+      <div class="header-right"><span class="node-dot"></span> OFFLINE-FIRST RESEARCH <span class="top-chip">RUNG 04 / DESIGN STUDIO</span></div>
     </header>
     <main>
       <section class="hero">
@@ -122,7 +123,59 @@
         </div>
       </section>
 
-      <section class="systems"><div class="section-head"><div><p class="eyebrow">03 / PLATFORM VISION</p><h2>One system. Six research tracks.</h2></div><p>No speculative hardware features are shown as working.</p></div>
+
+      <section class="hardware-section" id="hardware-studio" aria-labelledby="hardware-title">
+        <div class="section-head"><div><p class="eyebrow">03 / HARDWARE RESEARCH</p><h2 id="hardware-title">Physical design studio</h2></div><p>Geometry and optical architecture studies, not fitted eyewear.</p></div>
+        <div class="hardware-grid">
+          <article class="hw-panel">
+            <div class="panel-top"><div><p class="eyebrow">LIVE PARAMETRIC CONCEPT</p><h2>Front and side</h2></div><span class="microchip">NOT WEARABLE</span></div>
+            <div id="hw-diagram" class="hw-diagram" aria-label="Dimensioned geometry schematic"></div>
+            <div class="hw-figures">
+              <div><small>FRONT SPAN</small><strong id="hw-front">138.0 mm</strong></div>
+              <div><small>LENS CENTER SPACING</small><strong id="hw-spacing">68.0 mm</strong></div>
+              <div><small>OUTER HEIGHT</small><strong id="hw-height">44.0 mm</strong></div>
+            </div>
+            <p class="hw-warning">Concept numbers are not pupil distance, a prescription, or a fit-to-face measurement.</p>
+          </article>
+          <article class="hw-panel">
+            <div class="panel-top"><div><p class="eyebrow">PARAMETRIC CONTROLS</p><h2>Dimensions</h2></div><span class="microchip mint">MILLIMETERS</span></div>
+            <div class="hw-controls"><div class="hw-control"><label for="hw-lensWidth">LENS APERTURE WIDTH <output id="hw-lensWidth-value">50.0 mm</output></label><input id="hw-lensWidth" type="range" min="42" max="60" step="1" value="50"></div>
+<div class="hw-control"><label for="hw-lensHeight">LENS APERTURE HEIGHT <output id="hw-lensHeight-value">38.0 mm</output></label><input id="hw-lensHeight" type="range" min="28" max="52" step="1" value="38"></div>
+<div class="hw-control"><label for="hw-bridge">BRIDGE <output id="hw-bridge-value">18.0 mm</output></label><input id="hw-bridge" type="range" min="14" max="26" step="1" value="18"></div>
+<div class="hw-control"><label for="hw-endpiece">ENDPIECE ALLOWANCE <output id="hw-endpiece-value">10.0 mm</output></label><input id="hw-endpiece" type="range" min="6" max="16" step="1" value="10"></div>
+<div class="hw-control"><label for="hw-temple">TEMPLE REFERENCE LENGTH <output id="hw-temple-value">140.0 mm</output></label><input id="hw-temple" type="range" min="125" max="155" step="5" value="140"></div>
+<div class="hw-control"><label for="hw-rim">RIM WIDTH <output id="hw-rim-value">3.0 mm</output></label><input id="hw-rim" type="range" min="2" max="5" step="0.5" value="3"></div><button id="hw-reset" type="button">RESET DIMENSIONS</button></div>
+          </article>
+        </div>
+        <div class="hardware-lower">
+          <article class="hw-panel hw-prose">
+            <p class="eyebrow">04 / OPTICS OPTIONS</p>
+            <label for="hw-mechanism">RESEARCH MECHANISM</label>
+            <select id="hw-mechanism">
+              <option value="fixed">Fixed optical insert (baseline)</option>
+              <option value="alvarez">Sliding Alvarez-type plates</option>
+              <option value="fluidic">Fluidic variable-curvature element</option>
+              <option value="electro">Electrically tunable optics</option>
+            </select>
+            <h3 id="hw-name">Fixed optical insert</h3>
+            <small id="hw-status">REFERENCE / NOT AUTOFOCUS</small>
+            <p id="hw-description"></p><p><strong>Technical challenge:</strong> <span id="hw-challenge"></span></p>
+            <p><strong>What to measure:</strong> <span id="hw-measure"></span></p>
+          </article>
+          <article class="hw-panel hw-prose">
+            <p class="eyebrow">05 / LOCAL RESEARCH EXPORT</p><h3>Bring it into CAD</h3>
+            <p>Download a dimensional SVG, a non-wearable OpenSCAD bench geometry, or a structured JSON spec. No uploads, accounts, or runtime cloud services.</p>
+            <div class="hw-export">
+              <button id="hw-svg" type="button">EXPORT SVG DRAWING</button>
+              <button id="hw-scad" type="button">EXPORT BENCH SCAD</button>
+              <button id="hw-json" type="button">EXPORT RESEARCH JSON</button>
+            </div>
+            <p class="hw-warning">No physical lenses, hinges, fit, electronics or certified protection. Do not wear a printed concept as glasses.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="systems"><div class="section-head"><div><p class="eyebrow">06 / PLATFORM VISION</p><h2>One system. Six research tracks.</h2></div><p>No speculative hardware features are shown as working.</p></div>
         <div class="system-grid">
           <article><span>01 / OPTICS</span><h3>Variable focus</h3><p>Model focal demand and individual eye actuation.</p><small>SOFTWARE SIMULATION</small></article>
           <article><span>02 / SENSING</span><h3>Distance awareness</h3><p>Investigate sensor reliability and lost-signal behavior.</p><small>FUTURE HARDWARE</small></article>
