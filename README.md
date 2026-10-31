@@ -42,6 +42,12 @@ A new **offline, editable power/energy/mass budget** helps explore hypothetical 
 
 **None of the defaults are measured component specifications, BOM quotations, real battery predictions, thermal behavior, eye-safe actuators, wearable fitting or approval to build a physical device.** The JSON export carries this uncertainty and all unverified gates. See [Rung 5 Engineering Notes](docs/RUNG5_COMPONENT_ENGINEERING.md).
 
+## Rung 6: Optical Prototype Bench (software-only)
+
+A local optical-test recordkeeping studio now compares **synthetic examples** and explicitly **unverified manual observations** against user-configurable research thresholds for absolute diopter error, reported settling time and drift. Six deterministic examples include both within/outside custom criteria cases. Manually entered records require descriptive instrument/source and method fields; the software never calls a physical sensor. The local evidence table, separate source counts, CSV and JSON receipts keep synthetic and user-reported data clearly distinct. All records remain in memory until the user explicitly exports them; reloading loses them.
+
+**Nothing in Rung 6 is an optical certification, independent verification, usable eyewear design, physical test, real measurement capture or eye-safety assessment.** "Within user criteria" is descriptive only. See [Rung 6 optical bench guide](docs/RUNG6_OPTICAL_BENCH.md).
+
 ## Run
 
 Open `index.html` in a modern browser, or serve this directory using a static HTTP server.

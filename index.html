@@ -10,6 +10,7 @@
   <script type="module" src="./src/app.mjs"></script>
   <script type="module" src="./src/hardware-studio.mjs"></script>
   <script type="module" src="./src/component-studio.mjs"></script>
+  <script type="module" src="./src/bench-studio.mjs"></script>
 </head>
 <body>
   <a class="skip" href="#lab">Skip to focus controls</a>
@@ -19,7 +20,7 @@
         <span class="brand-mark" aria-hidden="true">Φ</span>
         <div><strong>OPTI<span class="bright">·</span>EYES</strong><small>FIELD OPTICS / Φ369 LABS</small></div>
       </div>
-      <div class="header-right"><span class="node-dot"></span> OFFLINE-FIRST RESEARCH <span class="top-chip">RUNG 05 / COMPONENT LAB</span></div>
+      <div class="header-right"><span class="node-dot"></span> OFFLINE-FIRST RESEARCH <span class="top-chip">RUNG 06 / OPTICAL BENCH</span></div>
     </header>
     <main>
       <section class="hero">
@@ -235,7 +236,61 @@
     <ol id="ce-gates" class="ce-gates"></ol>
   </article>
 </section>
-      <section class="systems"><div class="section-head"><div><p class="eyebrow">08 / PLATFORM VISION</p><h2>One system. Six research tracks.</h2></div><p>No speculative hardware features are shown as working.</p></div>
+
+<section class="bench-section" id="optical-bench" aria-labelledby="bench-heading">
+  <div class="section-head"><div><p class="eyebrow">08 / OPTICAL MEASUREMENT PLANNING</p><h2 id="bench-heading">Optical Prototype Bench</h2></div>
+    <p>Compare research readings against your own criteria. No automatic optical certification.</p></div>
+  <div class="ce-banner" role="note"><strong>NO PHYSICAL OPTICAL INSTRUMENT CONNECTED.</strong> Six initial records are deterministic synthetic demonstrations. Manually entered values are unverified claims, not independently measured data.</div>
+  <div class="bench-grid">
+    <article class="hw-panel bench-card">
+      <p class="eyebrow">01 / EXPLICIT CRITERIA</p><h3>Set your own research thresholds</h3>
+      <p>These are illustrative acceptance comparisons, never clinical, optical safety or regulatory limits. Editing them re-evaluates each record.</p>
+      <div class="bench-field"><label for="bench-maxErrorD">MAX ABSOLUTE FOCUS ERROR (D)</label><input id="bench-maxErrorD" type="number" value="0.25" min="0.01" max="1.5" step="0.01"></div>
+      <div class="bench-field"><label for="bench-maxSettlingMs">MAX SETTLING TIME (MS)</label><input id="bench-maxSettlingMs" type="number" value="300" min="20" max="5000" step="10"></div>
+      <div class="bench-field"><label for="bench-maxDriftD">MAX REPORTED DRIFT (D)</label><input id="bench-maxDriftD" type="number" value="0.10" min="0.01" max="1" step="0.01"></div>
+      <div class="bench-summary">
+        <div><small>TOTAL</small><strong id="bench-total">0</strong></div>
+        <div><small>SYNTHETIC</small><strong id="bench-demo-count">0</strong></div>
+        <div><small>USER-REPORTED</small><strong id="bench-user-count">0</strong></div>
+        <div><small>WITHIN CUSTOM CRITERIA</small><strong id="bench-within">0</strong></div>
+        <div><small>OUTSIDE CUSTOM CRITERIA</small><strong id="bench-outside">0</strong></div>
+      </div>
+    </article>
+    <article class="hw-panel bench-card">
+      <p class="eyebrow">02 / ENTRY WITH PROVENANCE</p><h3>Record a reported observation</h3>
+      <p>Entries are explicitly labeled USER ENTRY / UNVERIFIED. Instrument and method descriptions are required. No sensors, cameras or hardware actuators are accessed.</p>
+      <form id="bench-form">
+        <div class="bench-form-grid">
+          <div class="bench-field"><label for="bench-targetD">TARGET POWER (D)</label><input id="bench-targetD" required type="number" min="0" max="3" step="0.01" value="1.5"></div>
+          <div class="bench-field"><label for="bench-observedD">REPORTED POWER (D)</label><input id="bench-observedD" required type="number" min="0" max="3" step="0.01" value="1.4"></div>
+          <div class="bench-field"><label for="bench-settlingMs">REPORTED SETTLING (MS)</label><input id="bench-settlingMs" required type="number" min="0" max="5000" step="1" value="250"></div>
+          <div class="bench-field"><label for="bench-driftD">REPORTED DRIFT (D)</label><input id="bench-driftD" required type="number" min="0" max="2" step="0.01" value="0.05"></div>
+        </div>
+        <div class="bench-field"><label for="bench-instrument">INSTRUMENT / SOURCE IDENTIFIER</label><input id="bench-instrument" required maxlength="140" placeholder="Describe the instrument or origin; not verified"></div>
+        <div class="bench-field"><label for="bench-method">METHOD / REFERENCE DESCRIPTION</label><input id="bench-method" required maxlength="140" placeholder="How was this observation reportedly obtained?"></div>
+        <div class="bench-field"><label for="bench-notes">NOTES (OPTIONAL)</label><textarea id="bench-notes" maxlength="240" rows="2" placeholder="Conditions, uncertainty, caveats"></textarea></div>
+        <button type="submit" class="bench-primary">ADD USER-REPORTED RECORD</button>
+      </form>
+      <p id="bench-entry-status" role="status" aria-live="polite" class="ce-note">No user observation has been added.</p>
+    </article>
+  </div>
+  <article class="hw-panel bench-records">
+    <div class="bench-records-head">
+      <div><p class="eyebrow">03 / EVIDENCE LEDGER</p><h3>Record comparison</h3></div>
+      <div class="bench-actions"><button type="button" id="bench-load-demo">LOAD SYNTHETIC EXAMPLES</button><button type="button" id="bench-clear">CLEAR MEMORY</button></div>
+    </div>
+    <p id="bench-status" class="ce-note" role="status" aria-live="polite">No physical optical instrument connected.</p>
+    <div class="bench-overflow"><table><thead><tr>
+      <th scope="col">Record</th><th scope="col">Evidence</th><th scope="col">Optic</th>
+      <th scope="col">Target D</th><th scope="col">Reported D</th><th scope="col">Error D</th>
+      <th scope="col">Settle ms</th><th scope="col">Drift D</th><th scope="col">Custom comparison</th>
+    </tr></thead><tbody id="bench-rows"></tbody></table></div>
+    <p id="bench-empty" hidden>No records in memory. Load synthetic examples or add a manual observation.</p>
+    <div class="bench-actions"><button type="button" id="bench-json">EXPORT LAB RECEIPT / JSON</button><button type="button" id="bench-csv">EXPORT RECORDS / CSV</button></div>
+    <p class="hw-warning">Neither a synthetic example nor a manually entered observation is independent verification. "Within criteria" does not mean safe, wearable, medically effective, or legally approved.</p>
+  </article>
+</section>
+      <section class="systems"><div class="section-head"><div><p class="eyebrow">09 / PLATFORM VISION</p><h2>One system. Six research tracks.</h2></div><p>No speculative hardware features are shown as working.</p></div>
         <div class="system-grid">
           <article><span>01 / OPTICS</span><h3>Variable focus</h3><p>Model focal demand and individual eye actuation.</p><small>SOFTWARE SIMULATION</small></article>
           <article><span>02 / SENSING</span><h3>Distance awareness</h3><p>Investigate sensor reliability and lost-signal behavior.</p><small>FUTURE HARDWARE</small></article>

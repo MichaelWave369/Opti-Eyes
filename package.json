@@ -1,12 +1,12 @@
 {
   "name": "opti-eyes",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "type": "module",
   "description": "Opti-Eyes simulated focus lab, no runtime dependencies",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
-    "check": "node --check src/component-model.mjs && node --check src/component-studio.mjs && node --check src/frame-model.mjs && node --check src/hardware-studio.mjs && node --check src/wrist-session.mjs && node --check src/sensor-model.mjs && node --check src/optics.mjs && node --check src/wrist-bridge.mjs && node --check src/app.mjs && node --check scripts/build.mjs && npm test",
+    "check": "node --check src/optical-bench.mjs && node --check src/bench-studio.mjs && node --check src/component-model.mjs && node --check src/component-studio.mjs && node --check src/frame-model.mjs && node --check src/hardware-studio.mjs && node --check src/wrist-session.mjs && node --check src/sensor-model.mjs && node --check src/optics.mjs && node --check src/wrist-bridge.mjs && node --check src/app.mjs && node --check scripts/build.mjs && npm test",
     "build": "node scripts/build.mjs"
   },
   "engines": {
