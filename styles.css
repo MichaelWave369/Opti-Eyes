@@ -96,3 +96,28 @@
 .ce-gates span{font:12px/1.55 system-ui;color:#a8c7c7;margin-top:7px}
 @media(max-width:1100px){.component-grid{grid-template-columns:1fr}.ce-gate-panel{grid-template-columns:1fr}}
 @media(max-width:650px){.ce-flow{grid-template-columns:repeat(2,1fr)}.ce-metrics{grid-template-columns:repeat(2,1fr)}.ce-gates{grid-template-columns:1fr}}
+
+/* Rung 6 optical bench: non-certified research ledger */
+.bench-section{padding-top:15px}.bench-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:14px}
+.bench-card{padding:22px}.bench-card h3,.bench-records h3{color:#eff8f4;font-size:20px;margin:8px 0 12px}
+.bench-card>p:not(.eyebrow),.bench-records>p{font:12px/1.65 system-ui;color:#9fbfc2}
+.bench-field{margin:17px 0}.bench-field label{display:block;color:#b6d1d2;font:11px/1.5 ui-monospace,Consolas,monospace;margin-bottom:8px}
+.bench-field input,.bench-field textarea{display:block;width:100%;border:1px solid #416671;border-radius:7px;background:#091d28;color:#ecf7f4;padding:11px 12px;font:14px/1.4 system-ui}
+.bench-field textarea{resize:vertical}.bench-field input:focus-visible,.bench-field textarea:focus-visible{outline:2px solid #8ce5d5;outline-offset:1px}
+.bench-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:22px}
+.bench-summary>div{background:#112f39;border:1px solid #31545d;padding:12px;border-radius:7px}
+.bench-summary small{display:block;color:#9fbec0;font:10px/1.5 ui-monospace,Consolas,monospace}
+.bench-summary strong{display:block;color:#9fe9d7;font:23px ui-monospace,Consolas,monospace;margin-top:9px}
+.bench-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}
+.bench-primary,.bench-actions button{border-radius:7px;padding:12px 14px;background:#173943;border:1px solid #4d7a76;color:#d7f8eb;font:11px ui-monospace,Consolas,monospace;cursor:pointer}
+.bench-primary{width:100%;background:#21635f}.bench-actions button:hover,.bench-primary:hover{background:#27656a}
+.bench-records{margin-top:14px;padding:22px}
+.bench-records-head{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}
+.bench-actions{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}
+.bench-overflow{overflow-x:auto;border:1px solid #33505a;border-radius:8px}
+.bench-overflow table{border-collapse:collapse;min-width:910px;width:100%;font:11px/1.5 ui-monospace,Consolas,monospace}
+.bench-overflow th,.bench-overflow td{border-bottom:1px solid #2d4a53;padding:11px 9px;text-align:left}
+.bench-overflow th{background:#15343e;color:#b7d3d1}
+.bench-overflow td{color:#d2e7e6}.bench-overflow tbody tr:hover{background:#17333c}
+@media(max-width:850px){.bench-grid{grid-template-columns:1fr}}
+@media(max-width:540px){.bench-form-grid{grid-template-columns:1fr}.bench-summary{grid-template-columns:repeat(2,1fr)}}
