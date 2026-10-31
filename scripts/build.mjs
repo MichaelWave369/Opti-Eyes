@@ -1,0 +1,10 @@
+import { cp, mkdir, rm, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
+const root = resolve(import.meta.dirname ?? new URL("..", import.meta.url).pathname, "..");
+const out = resolve(root, "dist");
+await rm(out, { recursive: true, force: true });
+await mkdir(out, { recursive: true });
+for (const file of ["index.html", "styles.css"]) await cp(resolve(root, file), resolve(out, file));
+await cp(resolve(root, "src"), resolve(out, "src"), { recursive: true });
+await writeFile(resolve(out, ".nojekyll"), "");
+console.log("Opti-Eyes static build: dist/");

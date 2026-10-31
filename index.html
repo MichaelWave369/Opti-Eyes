@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111a">
+  <meta name="description" content="Opti-Eyes: open adaptive-optics research and simulated focus laboratory by Φ369 Labs.">
+  <title>Opti-Eyes | Focus Lab</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./src/app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#lab">Skip to focus controls</a>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand" aria-label="Opti-Eyes by Phi369 Labs">
+        <span class="brand-mark" aria-hidden="true">Φ</span>
+        <div><strong>OPTI<span class="bright">·</span>EYES</strong><small>FIELD OPTICS / Φ369 LABS</small></div>
+      </div>
+      <div class="header-right"><span class="node-dot"></span> OFFLINE-FIRST RESEARCH <span class="top-chip">RUNG 01 / SIMULATOR</span></div>
+    </header>
+    <main>
+      <section class="hero">
+        <p class="eyebrow">GEN-E ECOSYSTEM <span class="slash">/</span> OPTICAL INTERFACE RESEARCH</p>
+        <h1>See the <em>possibility.</em><br>Measure the <span>difference.</span></h1>
+        <p class="lede">A transparent laboratory for exploring adaptive-focus eyewear. No magical lenses, no secret sensors, no claims we cannot test.</p>
+        <div class="notice" role="note"><span aria-hidden="true">◇</span> SOFTWARE SIMULATION ONLY. Not vision correction, a prescription, medical advice, or functioning eyewear.</div>
+      </section>
+
+      <section id="lab" class="lab-grid" aria-label="Focus laboratory">
+        <div class="instrument">
+          <div class="panel-top"><div><p class="eyebrow">01 / LIVE OPTICAL MODEL</p><h2>Focus field</h2></div><span id="mode-readout" class="microchip">MANUAL</span></div>
+          <div class="view">
+            <svg class="optical-svg" viewBox="0 0 840 310" role="img" aria-labelledby="optics-title optics-desc">
+              <title id="optics-title">Schematic of a viewed target, two variable lenses, and a pair of eyes</title>
+              <desc id="optics-desc">An illustrative ray path. This is a diagram, not a physical ray-tracing model.</desc>
+              <defs><linearGradient id="raygrad" x1="0" x2="1"><stop offset="0" stop-color="#65dcd3" stop-opacity=".16"/><stop offset=".7" stop-color="#65dcd3"/><stop offset="1" stop-color="#f1bb77"/></linearGradient></defs>
+              <g opacity=".18" stroke="#89bbcc" stroke-width="1"><path d="M0 52H840 M0 104H840 M0 156H840 M0 208H840 M0 260H840 M80 0V310 M160 0V310 M240 0V310 M320 0V310 M400 0V310 M480 0V310 M560 0V310 M640 0V310 M720 0V310 M800 0V310"/></g>
+              <line x1="32" y1="155" x2="814" y2="155" stroke="#a4d2d5" stroke-dasharray="5 8" opacity=".4"/>
+              <g id="ray-group" stroke="url(#raygrad)" stroke-width="2" fill="none">
+                <path d="M118 155L520 87L742 117"/><path d="M118 155L520 224L742 194"/>
+                <path d="M118 155L520 87L742 194" opacity=".38"/><path d="M118 155L520 224L742 117" opacity=".38"/>
+              </g>
+              <g id="target-symbol" transform="translate(118 155)">
+                <circle r="33" fill="#63e0d4" fill-opacity=".07" stroke="#63e0d4" stroke-width="2"/>
+                <circle r="17" fill="none" stroke="#63e0d4" opacity=".65"/>
+                <path d="M-45 0H45 M0 -45V45" stroke="#63e0d4" opacity=".5"/>
+              </g>
+              <g><rect x="504" y="42" width="33" height="228" rx="16" fill="#76d5d2" fill-opacity=".11" stroke="#7cddd6" stroke-width="2"/><path d="M520 55Q500 155 520 256Q540 155 520 55" fill="none" stroke="#8be3da" stroke-width="2" id="lens-curve"/></g>
+              <g fill="#b9deec" stroke="#9dbdce" stroke-width="1.5">
+                <path d="M728 105Q776 105 787 119Q774 137 728 137Q715 120 728 105Z" fill="#a7ddeb" fill-opacity=".15"/>
+                <path d="M728 175Q776 175 787 189Q774 207 728 207Q715 190 728 175Z" fill="#a7ddeb" fill-opacity=".15"/>
+                <circle cx="751" cy="120" r="10" fill="#c0f6ed"/><circle cx="751" cy="190" r="10" fill="#c0f6ed"/>
+              </g>
+              <g fill="#b4cad4" font-size="13" letter-spacing="2" font-family="monospace"><text x="75" y="242">TARGET</text><text x="469" y="290">VARIABLE OPTICS</text><text x="714" y="242">L / R EYE</text></g>
+            </svg>
+            <div class="view-label">CONCEPTUAL SCHEMATIC <span>NOT RAY TRACING</span></div>
+          </div>
+          <div class="measure-grid">
+            <div><small>TARGET DISTANCE</small><strong id="target-distance">0.65 m</strong></div>
+            <div><small>FOCUS DEMAND</small><strong id="target-demand">1.54 D</strong></div>
+            <div><small>ACTUATOR OUTPUT</small><strong id="focus-output">1.50 D</strong></div>
+          </div>
+          <div class="focus-track">
+            <div class="track-head"><span>FOCUS DEMAND VS. SIMULATED OUTPUT</span><span>0–3 D</span></div>
+            <div class="track" aria-hidden="true"><div id="output-fill" class="track-fill"></div><div id="demand-marker" class="demand-marker"></div></div>
+            <div class="legend"><span><i class="legend-a"></i>Simulated actuator</span><span><i class="legend-b"></i>Target demand (clipped to scale)</span></div>
+          </div>
+          <div class="eyes-grid">
+            <div class="eye-readout"><small>OS / LEFT</small><strong id="left-output">1.50 D</strong><span id="left-error">Residual 0.04 D</span></div>
+            <div class="eye-readout"><small>OD / RIGHT</small><strong id="right-output">1.50 D</strong><span id="right-error">Residual 0.04 D</span></div>
+          </div>
+          <p id="limit-message" class="hint" role="status" aria-live="polite">Measurements are illustrative only.</p>
+        </div>
+
+        <div class="controls">
+          <div class="panel-top"><div><p class="eyebrow">02 / OPERATOR INPUT</p><h2>Focus controls</h2></div><span class="microchip mint">LOCAL</span></div>
+          <fieldset class="mode-switch"><legend>OPERATING MODE</legend>
+            <button type="button" data-mode="manual" aria-pressed="true">MANUAL</button>
+            <button type="button" data-mode="adaptive" aria-pressed="false">ADAPTIVE*</button>
+            <button type="button" data-mode="wrist" aria-pressed="false">WRIST*</button>
+          </fieldset>
+          <p id="mode-help" class="mode-help">Directly adjust the simulated focus actuator.</p>
+          <div class="slider-block"><div class="slider-label"><label for="distance">VIEWING DISTANCE</label><output id="distance-value" for="distance">0.65 m</output></div><input id="distance" type="range" min="0.25" max="6" step="0.05" value="0.65"><div class="ends"><span>NEAR / 0.25 M</span><span>FAR / 6 M</span></div></div>
+          <div class="slider-block"><div class="slider-label"><label for="manual-add">FOCUS ACTUATOR (SIMULATED)</label><output id="manual-value" for="manual-add">1.50 D</output></div><input id="manual-add" type="range" min="0" max="3" step="0.05" value="1.5"><div class="ends"><span>0.00 D</span><span>3.00 D</span></div></div>
+          <div class="calibration">
+            <h3>Per-eye research offsets</h3>
+            <p>Illustrative independent offsets only. Never use these values as a prescription or fitting measurement.</p>
+            <div class="slider-label"><label for="left-bias">LEFT OFFSET</label><output id="left-bias-value" for="left-bias">0.00 D</output></div><input id="left-bias" type="range" min="-0.75" max="0.75" step="0.05" value="0">
+            <div class="slider-label right-label"><label for="right-bias">RIGHT OFFSET</label><output id="right-bias-value" for="right-bias">0.00 D</output></div><input id="right-bias" type="range" min="-0.75" max="0.75" step="0.05" value="0">
+          </div>
+          <div class="wrist-group"><h3>GEN.E.WRIST <span>SIMULATED PREVIEW</span></h3><div class="wrist-buttons"><button type="button" id="wrist-near">FOCUS +0.50 D</button><button type="button" id="wrist-far">FOCUS −0.50 D</button></div><p>Buttons are enabled in Wrist Preview mode. No pairing, networking, or actual device command occurs.</p></div>
+          <div class="bottom-actions"><button type="button" id="reset">RESET LAB</button><button type="button" id="export">EXPORT LAB STATE ↓</button></div>
+        </div>
+      </section>
+
+      <section class="systems"><div class="section-head"><div><p class="eyebrow">03 / PLATFORM VISION</p><h2>One system. Six research tracks.</h2></div><p>No speculative hardware features are shown as working.</p></div>
+        <div class="system-grid">
+          <article><span>01 / OPTICS</span><h3>Variable focus</h3><p>Model focal demand and individual eye actuation.</p><small>SOFTWARE SIMULATION</small></article>
+          <article><span>02 / SENSING</span><h3>Distance awareness</h3><p>Investigate sensor reliability and lost-signal behavior.</p><small>FUTURE HARDWARE</small></article>
+          <article><span>03 / TINT</span><h3>Light control</h3><p>Evaluate certified UV protection and optional glare reduction.</p><small>FUTURE HARDWARE</small></article>
+          <article><span>04 / INTERFACE</span><h3>AR overlay</h3><p>Research safe displays and optional visual information.</p><small>FUTURE HARDWARE</small></article>
+          <article><span>05 / LINK</span><h3>GEN.E.WRIST</h3><p>Plan explicit, reversible local-only control permissions.</p><small>MANIFEST PROPOSAL</small></article>
+          <article><span>06 / TRUST</span><h3>Repair & verify</h3><p>Bench calibration, testing, accessibility and modular repair.</p><small>DESIGN PRINCIPLE</small></article>
+        </div>
+      </section>
+    </main>
+    <footer><span>OPTI-EYES / ENTER THE FIELD / Φ369 LABS</span><span>OPEN RESEARCH · LOCAL FIRST · NO MEDICAL CLAIMS</span><a href="https://github.com/MichaelWave369/Opti-Eyes" rel="noopener noreferrer">SOURCE CODE ↗</a></footer>
+  </div>
+</body>
+</html>
